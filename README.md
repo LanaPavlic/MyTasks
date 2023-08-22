@@ -4,3 +4,6 @@
 ## UseCase dijagram
 ![UseCase Dijagram](https://github.com/LanaPavlic/MyTasks/blob/main/UseCase%20Dijagram.png)
 -----
+## Pokretanje aplikacije
+> Aplikacija se pkreće putem dockera
+> Ukoliko radite na Ubuntu sustavu aplikaciju pokrećete ulaskom u terminal te upišete slijedeće:   -python app.py
