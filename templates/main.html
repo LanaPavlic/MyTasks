@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--Standard-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MyTasks</title>
+    <!--Izgled - CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+<header>
+    <h1>MyTasks</h1>
+    <!--Forma za unos taskova -->
+    <form id="new-task-form" method="POST" action="/add_task">
+        <input
+            type="text"
+            id="new-task-input"
+            name="content"
+            placeholder="What do I need to do?"
+        />
+        <input
+            type="date"
+            id="new-date-input"
+            name="deadline"
+            placeholder="When is the deadline?"
+        />
+        <input
+            type="submit"
+            id="new-task-submit"
+            value="Add task"
+        />
+    </form>
+</header>
+
+<main>
+    <section class="task-list">
+        <h2>My Task List</h2>
+
+        <div id="tasks">
+            {% for task in tasks %}
+            <div class="task" data-id="{{ task.id }}">
+                <div class="content">
+                      <input type="checkbox" class="completed-checkbox"
+        {% if task.completed %}checked{% endif %}
+    />
+                    <input
+                        type="text"
+                        class="text"
+                        value="{{ task.content }}"
+                        readonly
+                    />
+                    <input
+                        type="date"
+                        class="deadline"
+                        value="{{ task.deadline.strftime('%Y-%m-%d') if task.deadline else '' }}"
+                        readonly
+                    />
+                </div>
+                <div class="actions">
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+<!--Fukcionalnost - JavaScript -->
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+
+</html>
