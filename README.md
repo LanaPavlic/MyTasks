@@ -6,4 +6,5 @@
 -----
 ## Pokretanje aplikacije
 > Aplikacija se pkreće putem dockera
+
 > Ukoliko radite na Ubuntu sustavu aplikaciju pokrećete ulaskom u terminal te upišete slijedeće:   -python app.py
